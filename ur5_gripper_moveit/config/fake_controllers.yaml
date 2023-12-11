@@ -1,0 +1,29 @@
+controller_list:
+  - name: fake_ur5e_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - ur5e_shoulder_pan_joint
+      - ur5e_shoulder_lift_joint
+      - ur5e_elbow_joint
+      - ur5e_wrist_1_joint
+      - ur5e_wrist_2_joint
+      - ur5e_wrist_3_joint
+  - name: fake_robotiq_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - robotiq_palm_finger_1_joint
+      - robotiq_finger_1_joint_1
+      - robotiq_finger_1_joint_2
+      - robotiq_finger_1_joint_3
+      - robotiq_palm_finger_2_joint
+      - robotiq_finger_2_joint_1
+      - robotiq_finger_2_joint_2
+      - robotiq_finger_2_joint_3
+      - robotiq_finger_middle_joint_1
+      - robotiq_finger_middle_joint_2
+      - robotiq_finger_middle_joint_3
+initial:  # Define initial robot poses per group
+  - group: ur5e_arm
+    pose: default_arm_pose
+  - group: robotiq_gripper
+    pose: Default_pose

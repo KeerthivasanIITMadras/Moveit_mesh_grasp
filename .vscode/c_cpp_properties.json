@@ -1,0 +1,35 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/keerthivasan/arm_ws/devel/include/**",
+        "/home/keerthivasan/keerthi/catkin/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/aruco_ros/aruco/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/aruco_ros/aruco_ros/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/eyrc_21/gazebo_ros_link_attacher/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/eyrc_21/robotiq_85_gripper-master/robotiq_85_simulation/roboticsgroup_gazebo_plugins/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_2f_gripper_action_server/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_2f_gripper_control/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_3f_gripper_articulated_gazebo_plugins/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_3f_gripper_control/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_ethercat/include/**",
+        "/home/keerthivasan/arm_ws/src/robotiq/robotiq_ft_sensor/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/keerthivasan/keerthi/catkin/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/keerthivasan/arm_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

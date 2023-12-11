@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro" name="ur5_gripper">
+  
+  <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_articulated.xacro"/>
+  <xacro:include filename="$(find ur_description)/urdf/ur5e.xacro"/>
+
+  <link name="world" />
+  
+  <joint name="attach_ur5e" type="fixed">
+    <parent link="ur5e_tool0"/>
+    <child link="robotiq_palm"/>
+    <origin xyz="0.0 0.0 0.05" rpy="1.57 0 1.57"/>
+  </joint>
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="ur5e_base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+
+
+</robot>
