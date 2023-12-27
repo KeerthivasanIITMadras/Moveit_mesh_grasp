@@ -6,7 +6,7 @@ from geometry_msgs.msg import TransformStamped
 def link_states_callback(msg):
     # Assuming the object you want to track is at index 0 in the LinkStates message
     link_names = msg.name
-    desired_link_name = "cuboid_zero_mass::link"
+    desired_link_name = "unit_box_square_0.9::link"
     if desired_link_name in link_names:
         index = link_names.index(desired_link_name)
         # Access the pose of the desired link using the index
