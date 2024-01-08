@@ -7,7 +7,7 @@
   <arg name="gazebo_gui" default="false" doc="Start Gazebo GUI"/>
   <arg name="paused" default="false" doc="Start Gazebo paused"/>
   <!-- <arg name="world_name" default="$(find ur5_gripper_warehouse)/worlds/default_world.world" doc="Gazebo world file"/> -->
-  <arg name="world_name" default="$(find ur5_gripper_warehouse)/worlds/cube_world.world" doc="Gazebo world file"/>
+  <arg name="world_name" default="$(find ur5_gripper_warehouse)/worlds/cuboid_world.world" doc="Gazebo world file"/>
   <arg name="world_pose" default="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0" doc="Pose to spawn the robot at"/>
   <arg name="rviz_config" value="$(find ur5_gripper_moveit)/launch/moveit.rviz"/>
 

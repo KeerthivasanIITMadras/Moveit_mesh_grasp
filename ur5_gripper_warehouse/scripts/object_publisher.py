@@ -6,7 +6,8 @@ from geometry_msgs.msg import TransformStamped
 def link_states_callback(msg):
     # Assuming the object you want to track is at index 0 in the LinkStates message
     link_names = msg.name
-    desired_link_name = "unit_box_square_0.9::link"
+    desired_link_name = "unit_box_square_0.1::link"
+    desired_link_name = "cuboid_009_015_018::link"
     if desired_link_name in link_names:
         index = link_names.index(desired_link_name)
         # Access the pose of the desired link using the index
@@ -15,7 +16,7 @@ def link_states_callback(msg):
     tf_msg = TransformStamped()
     tf_msg.header.stamp = rospy.Time.now()
     tf_msg.header.frame_id = "world"  # Replace with the parent frame ID
-    tf_msg.child_frame_id = "Object_center"  # Replace with the object frame ID
+    tf_msg.child_frame_id = "object_frame"  # Replace with the object frame ID
     tf_msg.transform.translation.x = desired_link_pose.position.x
     tf_msg.transform.translation.y = desired_link_pose.position.y
     tf_msg.transform.translation.z = desired_link_pose.position.z

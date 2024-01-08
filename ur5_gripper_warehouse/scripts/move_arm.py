@@ -22,7 +22,7 @@ group.set_pose_reference_frame('ur5e_base_link')
 while transform is  None:
     try:
        # Perform the transform lookup from 'your_frame' to 'base_link'
-       transform = tf_buffer.lookup_transform('ur5e_base_link', 'EEF', rospy.Time(0))
+       transform = tf_buffer.lookup_transform('ur5e_base_link', 'eef_frame', rospy.Time(0))
        # 'your_frame' should be replaced with the frame you want to look up
        # Print the transform details
        rospy.loginfo("Transform from 'base_link' to 'your_frame':")

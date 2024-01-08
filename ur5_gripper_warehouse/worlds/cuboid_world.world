@@ -88,25 +88,25 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>3024 454000000</sim_time>
-      <real_time>5 824146214</real_time>
-      <wall_time>1704714134 727442625</wall_time>
-      <iterations>5789</iterations>
+      <sim_time>3057 88000000</sim_time>
+      <real_time>32 817110229</real_time>
+      <wall_time>1704716267 759710514</wall_time>
+      <iterations>32634</iterations>
+      <model name='cuboid_009_015_018'>
+        <pose>-0.470458 0.221063 0.089995 6.2e-05 0 -1.6256</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.470458 0.221063 0.089995 6.2e-05 0 -1.6256</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.307773 -0.077838 -9.36178 -2.14172 0.273363 3.01232</acceleration>
+          <wrench>-0.923319 -0.233515 -28.0854 0 -0 0</wrench>
+        </link>
+      </model>
       <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
           <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='unit_box_square_0.1'>
-        <pose>-0.470452 0.221057 0.09 0 0 -1.62558</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.470452 0.221057 0.09 0 0 -1.62558</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -118,12 +118,12 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>1.50086 1.58811 0.943451 0 0.248783 -2.67179</pose>
+        <pose>1.57933 0.854849 0.831244 0 0.284783 -2.98379</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='unit_box_square_0.1'>
+    <model name='cuboid_009_015_018'>
       <link name='link'>
         <inertial>
           <mass>3</mass>
@@ -140,12 +140,12 @@
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0 0 0 -0 -0 -0</pose>
         <gravity>1</gravity>
         <visual name='visual'>
           <geometry>
             <box>
-              <size>0.1 0.1 0.1</size>
+              <size>0.09 0.15 0.18</size>
             </box>
           </geometry>
           <material>
@@ -171,7 +171,7 @@
           <pose>0 0 0 0 -0 0</pose>
           <geometry>
             <box>
-              <size>0.1 0.1 0.1</size>
+              <size>0.09 0.15 0.18</size>
             </box>
           </geometry>
           <surface>
@@ -223,7 +223,7 @@
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-0.470452 0.221057 0.05 0 -0 0</pose>
+      <pose>-0.470452 0.221057 0.05 0 -0 -1.62558</pose>
     </model>
   </world>
 </sdf>
