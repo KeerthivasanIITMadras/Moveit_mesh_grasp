@@ -11,6 +11,7 @@ from itertools import combinations
 from scipy.optimize import minimize
 import time
 import Gripper
+import math
 
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
@@ -134,14 +135,13 @@ class Optimization():
         normals_all = np.array(self.pcd.normals)
         point_indices = list(range(len(points)))
         point_combinations = combinations(point_indices, 3)
-
         for comb in point_combinations:
             indices = list(comb)
             self.idt = indices
             triplets = np.array(points)[indices]
             normals = normals_all[indices]
             self.iter = self.iter +1
-            printProgressBar(self.iter, int(4000000/3), prefix = 'Solver progress:', suffix = 'Complete', length = 50)
+            printProgressBar(self.iter, math.comb(len(points),3), prefix = 'Solver progress:', suffix = 'Complete', length = 50)
             if self.isochoose.choose(triplets,normals):
                 self.transformation(triplets,normals)
                 self.valid_points+=1
@@ -390,7 +390,7 @@ def force_visualizer(mesh, points, normals,center_point,eef):
 def main():
     eefy=[]
     start = time.time()
-    name = "custom_planner/cad_files/cuboid"
+    name = "custom_planner/cad_files/Cylinder"
     mesh_path = f"{name}.stl"
     mesh = o3d.io.read_triangle_mesh(mesh_path)
     mesh.compute_vertex_normals()
@@ -399,6 +399,8 @@ def main():
     scaling_factor = 0.5
     # for cuboid
     scaling_factor = 0.3
+    # for cylinder
+    scaling_factor = 0.7
     # stl file works like this
     # It will have some x axis points starting from x to y
     # but that x to y may not contain the 0
@@ -443,13 +445,15 @@ def main():
     )
 
     # Visualize the resulting mesh
-    pcd = mesh2PointCloud(mesh2,200)
+    # for cube and cuboid 200 is enough
+    # for cylinder the basic solution obtainer is 250, increasing this will increase the solution but increases computational time
+    pcd = mesh2PointCloud(mesh2,300)
     o3d.visualization.draw_geometries([mesh2])
     # this line is for visualization, the vertices are scaled appropriately for visualization
     mesh2.vertices = o3d.utility.Vector3dVector(np.asarray(mesh2.vertices)/scaling_factor)
     optimser = Optimization(pcd)
     optimser.select()
-    path_to_save = "custom_planner/csv_files/cuboid"
+    path_to_save = "custom_planner/csv_files/Cylinder"
     [min, eefy, RPY] = log1.save_file(path_to_save)
     log1.cost_visualizer()
 

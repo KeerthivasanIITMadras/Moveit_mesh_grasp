@@ -8,6 +8,8 @@ def link_states_callback(msg):
     link_names = msg.name
     desired_link_name = "unit_box_square_0.1::link"
     desired_link_name = "cuboid_009_015_018::link"
+    desired_link_name = "unit_cylinder_0.05_0.1::link"
+    desired_link_name = "unit_cylinder_0.07_0.14::link"
     if desired_link_name in link_names:
         index = link_names.index(desired_link_name)
         # Access the pose of the desired link using the index

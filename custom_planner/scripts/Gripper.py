@@ -23,7 +23,8 @@ class Robotiq:
     def are_parallel(self,vec1, vec2):
         theta = np.arctan2(np.linalg.norm(np.cross(
                 vec1, vec2)), np.dot(vec1, vec2))
-        if theta*180/np.pi<=2 and theta*180/np.pi>=0:
+        if theta*180/np.pi<=8 and theta*180/np.pi>=0:
+            print(f"parallel={theta}")
             return True
         else:
             return False
@@ -31,7 +32,8 @@ class Robotiq:
     def is_antiparallel(self,vec1, vec2):
         theta = np.arctan2(np.linalg.norm(np.cross(
                vec1, vec2)), np.dot(vec1, vec2))
-        if theta*180/np.pi<=180 and theta*180/np.pi>=178:
+        if theta*180/np.pi<=180 and theta*180/np.pi>=172:
+            print(f"antiparallel={theta}")
             return True
         else:
             return False
@@ -91,13 +93,18 @@ class Robotiq:
         ty = ty/np.linalg.norm(ty)
         R[:3,1]=ty.T
         R[:3,0]=tx.T
-        
+        # this is the rotation for cube and cuboid
         rotation_z_90 = np.array([
             [0, 1, 0],
             [1, 0, 0],
             [0, 0, -1]
         ])
-
+        # this is the rotation for cylinder
+        rotation_z_90 = np.array([
+            [1, 0, 0],
+            [0, -1, 0],
+            [0, 0, -1]
+        ])
         # Perform the rotation of the Y-axis by multiplying R with the rotation matrix
         new_R = np.dot(R, rotation_z_90)
         # theta = np.pi/2
