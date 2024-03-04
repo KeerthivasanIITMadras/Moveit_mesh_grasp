@@ -122,7 +122,7 @@ class Optimization():
             0, 0, 0], [0, 0, 0], [0, 0, 0]])
         self.G = None
         self.mew = 0.7  
-        self.fc = np.array([0, 0, 70, 0, 0, 70, 0, 0, 70])
+        self.fc = np.array([0, 0, 30, 0, 0, 30, 0, 0, 30])
         self.min = 70  # Taking 15 since max error will be 10
         self.solved_combination = None
         self.solution = None
@@ -219,7 +219,7 @@ class Optimization():
 
         cons = [con1, con2, con3]
         sol = minimize(self.objective_function, self.fc,
-                       method='SLSQP', bounds=bnds, constraints=cons)
+                       method='COBYLA', constraints=cons)
         err = self.objective_function(sol.x)
         if err < 10:
             print(
@@ -390,17 +390,17 @@ def force_visualizer(mesh, points, normals,center_point,eef):
 def main():
     eefy=[]
     start = time.time()
-    name = "custom_planner/cad_files/Cylinder"
-    mesh_path = f"{name}.stl"
+    name = "/home/keerthivasan/arm_ws/src/egadevalset/egad_eval_set/C0"
+    mesh_path = f"{name}.obj"
     mesh = o3d.io.read_triangle_mesh(mesh_path)
     mesh.compute_vertex_normals()
-    pcd = mesh2PointCloud(mesh,1500)
+    pcd = mesh2PointCloud(mesh,2500)
     # for cube
     scaling_factor = 0.5
     # for cuboid
     scaling_factor = 0.3
     # for cylinder
-    scaling_factor = 0.7
+    scaling_factor = 0.2
     # stl file works like this
     # It will have some x axis points starting from x to y
     # but that x to y may not contain the 0
@@ -409,6 +409,7 @@ def main():
     # step1 : scaling down the mesh according ot a scaling factor depending on the stl file
 
     pcd.points = o3d.utility.Vector3dVector(np.array(pcd.points)*scaling_factor)
+    print(np.array(pcd.points))
     center_point = np.mean(np.asarray(pcd.points), axis=0)
     
     # shifting the whole mesh such that the center of the mesh is the center of the open3d gui
@@ -439,6 +440,9 @@ def main():
     distance_threshold =0.4 # Adjust as needed
     # for cuboid
     distance_threshold =0.8
+
+    # trial
+    distance_threshold = 3.0
     mesh2 = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
         filtered_point_cloud,
         o3d.utility.DoubleVector([distance_threshold, distance_threshold * 2])
@@ -447,7 +451,7 @@ def main():
     # Visualize the resulting mesh
     # for cube and cuboid 200 is enough
     # for cylinder the basic solution obtainer is 250, increasing this will increase the solution but increases computational time
-    pcd = mesh2PointCloud(mesh2,300)
+    pcd = mesh2PointCloud(mesh2,200)
     o3d.visualization.draw_geometries([mesh2])
     # this line is for visualization, the vertices are scaled appropriately for visualization
     mesh2.vertices = o3d.utility.Vector3dVector(np.asarray(mesh2.vertices)/scaling_factor)

@@ -23,7 +23,7 @@ class Robotiq:
     def are_parallel(self,vec1, vec2):
         theta = np.arctan2(np.linalg.norm(np.cross(
                 vec1, vec2)), np.dot(vec1, vec2))
-        if theta*180/np.pi<=8 and theta*180/np.pi>=0:
+        if theta*180/np.pi<=60 and theta*180/np.pi>=0:
             print(f"parallel={theta}")
             return True
         else:
@@ -32,7 +32,7 @@ class Robotiq:
     def is_antiparallel(self,vec1, vec2):
         theta = np.arctan2(np.linalg.norm(np.cross(
                vec1, vec2)), np.dot(vec1, vec2))
-        if theta*180/np.pi<=180 and theta*180/np.pi>=172:
+        if theta*180/np.pi<=180 and theta*180/np.pi>=120:
             print(f"antiparallel={theta}")
             return True
         else:
@@ -41,7 +41,8 @@ class Robotiq:
     def EEFpose(self,s1,s2):
         altitude = (s1**2 - (s2**2)/4)**0.5
         base = altitude/2 - 4.4704
-        hpt = 9.4488
+        hpt = 9.4488    
+        
         palm_dist = 9.2075 + (hpt**2 - base**2)**0.5
         return palm_dist
 
@@ -62,7 +63,7 @@ class Robotiq:
         # C= np.arctan2(np.linalg.norm(np.cross(
         #         self.t2-self.t3, self.t1-self.t3)), np.dot(self.t2-self.t3, self.t1-self.t3))
         # centr = (self.t1 * math.sin(2 * A) + self.t2 * math.sin(2 * B) + self.t3 * math.sin(2 * C)) / (math.sin(2 * A) + math.sin(2 * B) + math.sin(2 * C))
-
+        '''need to add pre grasp pose'''
         self.normal = np.cross((self.t1 -self.t2),(self.t1 -self.t3))
         pose = centr - self.dist*self.normal/np.linalg.norm(self.normal)
         return np.array(pose)
