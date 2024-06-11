@@ -24,7 +24,7 @@ class Robotiq:
         theta = np.arctan2(np.linalg.norm(np.cross(
                 vec1, vec2)), np.dot(vec1, vec2))
         if theta*180/np.pi<=60 and theta*180/np.pi>=0:
-            print(f"parallel={theta}")
+            # print(f"parallel={theta}")
             return True
         else:
             return False
@@ -33,7 +33,7 @@ class Robotiq:
         theta = np.arctan2(np.linalg.norm(np.cross(
                vec1, vec2)), np.dot(vec1, vec2))
         if theta*180/np.pi<=180 and theta*180/np.pi>=120:
-            print(f"antiparallel={theta}")
+            # print(f"antiparallel={theta}")
             return True
         else:
             return False
